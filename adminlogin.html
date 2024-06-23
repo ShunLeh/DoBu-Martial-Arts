@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dobu Martial Arts</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" integrity="sha384-rOA1PnstxnOBLzCLMcre8ybwbTmemjzdNlILg8O7z1lUkLXozs4DHonlDtnE7fpc" crossorigin="anonymous">
+</head>
+<body>
+
+<header class="header">    
+    <nav class="navbar">        
+        <a href="index.html">Home</a>
+        <a href="About.html">About us</a>
+        <a href="Price.html">Price</a>
+        <a href="Course.html">Courses</a>
+        <a href="Timetable.html">Timetable</a>
+        <a href="instructor.html">Instructor</a>
+        <a href="register.html">Register</a>
+        <a href="adminlogin.html">Admin</a>
+        <a href="login.html">Login</a>
+    </nav>
+</header>
+
+<div class="wrapper">
+    <form action="">
+        <h1>Login</h1>
+        <div class="input-box">
+            <label>Username</label>
+            <input type="text" id="username" placeholder="Username" required>
+        </div>
+        <div class="input-box">
+            <label>Password</label>
+            <input type="password" id="password" placeholder="Password" required>
+        </div>
+        <input type="submit" value="Admin Login" onclick="login(event)">
+        
+    </form>
+</div>
+<script>
+    function login(event){
+        event.preventDefault(); // Prevebt firn submission 
+        var p_user="admin";
+        var p_pass="12345";
+
+        var user=document.getElementById("username").value;
+        var pass=document.getElementById("password").value;
+
+        if(p_user==user && p_pass==pass){
+            window.location.href="admin.html";
+        }
+
+        else{
+            alert("Login fail");
+        }
+    }
+
+        </script>
+
+<!--Footer-->
+<footer class="footer">
+    <div class="footer__addr">
+        <h1 class="footer__logo">Dobu Martial Arts</h1>
+    </div>
+
+    <ul class="footer__nav">
+        <li class="nav__item">
+            <h2 class="nav__title">Media</h2>
+            <ul class="nav__ul">
+                <li><a href="#">Online</a></li>
+                <li><a href="#">Print</a></li>
+                <li><a href="#">Alternative Ads</a></li>
+            </ul>
+        </li>
+
+        <li class="nav__item">
+            <h2 class="nav__title">Legal</h2>
+            <ul class="nav__ul">
+                <li><a href="privacy.html">Privacy Policy</a></li>
+                <li><a href="Facilities.html">Facilities</a></li>
+                <li><a href="Sitemap.html">Site Map</a></li>
+            </ul>
+        </li>
+    </ul>
+</footer>
+
+
+</body>
+</html>
+

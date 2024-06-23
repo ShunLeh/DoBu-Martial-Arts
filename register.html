@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dobu Martial Arts</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.slim.min.js"></script>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" integrity="sha384-rOA1PnstxnOBLzCLMcre8ybwbTmemjzdNlILg8O7z1lUkLXozs4DHonlDtnE7fpc" crossorigin="anonymous">
+</head>
+<body>
+<!--header-->
+<header class="header">    
+    <nav class="navbar">        
+        <a href="index.html">Home</a>
+        <a href="About.html">About us</a>
+        <a href="Price.html">Price</a>
+        <a href="Course.html">Courses</a>
+        <a href="Timetable.html">Timetable</a>
+        <a href="instructor.html">Instructor</a>
+        <a href="register.html">Register</a>
+        <a href="adminlogin.html">Admin</a>
+        <a href="login.html">Login</a>
+       
+    </nav>
+</header>
+<!--Register-->
+<body onload="document.registration.user_name.focus();">
+    <h1>Registration Form</h1>
+    
+    <form name='registration'>
+
+        <label for="user-name">Name:</label>
+        <input type="text" name="user_name" id="username" size="50" placeholder="Enter User Name here" required />
+        <br>
+
+        <label for="email">Email:</label>
+        <input type="email" name="email" id="email" size="50" placeholder="Enter your email here" required />
+        <br>
+
+        
+        <label for="password">Password:</label>
+        <input type="text" name="enter_password" id="password" size="50" placeholder="Enter your password here" required />
+        <br>
+
+        <label for="phone">Phone Number :</label>
+        <input type="text" name="phone" id="phone" size="50" placeholder="Enter your phone number" required />
+        <br>
+
+        <input type="submit" name="submit" value="Submit" onclick="saveFormData(event)" />
+
+    </form>
+    <script>
+        function saveFormData(event) {
+            event.preventDefault(); // Prevent form submission
+    
+            // Get form values
+            var username = document.getElementById('username').value;
+            var email = document.getElementById('email').value;
+            var password = document.getElementById('password').value;
+            var phone = document.getElementById('phone').value;
+    
+            // Create an object to store the form data
+            var formData = {
+                username: username,
+                email: email,
+                password: password,
+                phone: phone
+            };
+            
+    
+            // Retrieve existing form data from local storage
+            var allFormData = JSON.parse(localStorage.getItem('allFormData')) || [];
+    
+            // Append the new form data to the existing array
+            allFormData.push(formData);
+    
+            // Save the updated form data array to local storage
+            localStorage.setItem('allFormData', JSON.stringify(allFormData));
+    
+            // Redirect to display.html
+            window.location.href = 'Thankyou.html';
+    }
+    
+    
+    
+    </script>
+<!--Footer-->
+<footer class="footer">
+    <div class="footer__addr">
+        <h1 class="footer__logo">Dobu Martial Arts</h1>
+    </div>
+
+    <ul class="footer__nav">
+        <li class="nav__item">
+            <h2 class="nav__title">Media</h2>
+            <ul class="nav__ul">
+                <li><a href="#">Online</a></li>
+                <li><a href="#">Print</a></li>
+                <li><a href="#">Alternative Ads</a></li>
+            </ul>
+        </li>
+
+        <li class="nav__item">
+            <h2 class="nav__title">Legal</h2>
+            <ul class="nav__ul">
+                <li><a href="privacy.html">Privacy Policy</a></li>
+                <li><a href="Facilities.html">Facilities</a></li>
+                <li><a href="Sitemap.html">Site Map</a></li>
+            </ul>
+        </li>
+    </ul>
+</footer>
+</body>
+</html>

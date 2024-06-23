@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dobu Martial Arts</title>
+    <link rel="stylesheet" href="style3.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" integrity="sha384-rOA1PnstxnOBLzCLMcre8ybwbTmemjzdNlILg8O7z1lUkLXozs4DHonlDtnE7fpc" crossorigin="anonymous">
+</head>
+<body onload="readAll()">
+
+<header class="header">    
+    <nav class="navbar">        
+        <a href="index.html">Home</a>
+        <a href="About.html">About us</a>
+        <a href="Price.html">Price</a>
+        <a href="Course.html">Courses</a>
+        <a href="Timetable.html">Timetable</a>
+        <a href="instructor.html">Instructor</a>
+        <a href="register.html">Register</a>
+        <a href="adminlogin.html">Admin</a>
+        <a href="login.html">Login</a>
+    </nav>
+</header>
+
+
+<div class="container">
+    <div class="form_container">
+        <form  class="create_form">
+            <input type="text" class="name" placeholder="Enter name"/>
+            <input type="email" class="email" placeholder="Enter Email"/>
+            <input type="text" class="password" placeholder="Enter password"/>
+            <button type="button" onclick="add()">Create</button>
+        </form>
+        <form class="update_form">
+            <input type="text" hidden class="id"/>
+            <input type="text" class="uname"/>
+            <input type="email" class="uemail"/>
+            <input type="text" class="upassword"/>
+            <button type="button" onclick="update()">Update</button>
+        </form>
+        <div class="add_div">
+            <button onclick="create()">Add+</button>
+        </div>
+        <table>
+            <thead>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Password</th>
+                <th>Action</th>
+            </thead>
+            <tbody class="data_table">
+
+            </tbody>
+        </table>
+    </div>
+</div>
+
+
+
+
+<!--Footer-->
+<footer class="footer">
+    <div class="footer__addr">
+        <h1 class="footer__logo">Dobu Martial Arts</h1>
+    </div>
+
+    <ul class="footer__nav">
+        <li class="nav__item">
+            <h2 class="nav__title">Media</h2>
+            <ul class="nav__ul">
+                <li><a href="#">Online</a></li>
+                <li><a href="#">Print</a></li>
+                <li><a href="#">Alternative Ads</a></li>
+            </ul>
+        </li>
+
+        <li class="nav__item">
+            <h2 class="nav__title">Legal</h2>
+            <ul class="nav__ul">
+                <li><a href="privacy.html">Privacy Policy</a></li>
+                <li><a href="Facilities.html">Facilities</a></li>
+                <li><a href="Sitemap.html">Site Map</a></li>
+            </ul>
+        </li>
+    </ul>
+</footer>
+
+<script src="script.js"></script>
+
+</body>
+</html>
+

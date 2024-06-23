@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dobu Martial Arts</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" integrity="sha384-rOA1PnstxnOBLzCLMcre8ybwbTmemjzdNlILg8O7z1lUkLXozs4DHonlDtnE7fpc" crossorigin="anonymous">
+</head>
+<body>
+<!--header-->
+<header class="header">    
+    <nav class="navbar">        
+        <a href="index.html">Home</a>
+        <a href="About.html">About us</a>
+        <a href="Price.html">Price</a>
+        <a href="Course.html">Courses</a>
+        <a href="Timetable.html">Timetable</a>
+        <a href="instructor.html">Instructor</a>
+        <a href="register.html">Register</a>
+        <a href="adminlogin.html">Admin</a>
+        <a href="login.html">Login</a>
+       
+    </nav>
+</header>
+
+<h1>Local Data Storage Table (jQuery)</h1>
+<input type="text" id="nameInput" placeholder="Enter Name">
+<input type="number" id="ageInput" placeholder="Enter Age">
+<button id="saveButton">Save Data</button>
+<button id="clearButton">Clear Data</button>
+<table id="dataTable">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Age</th>
+    </tr>
+  </thead>
+  <tbody id="tableBody">
+  </tbody>
+</table>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+  $(document).ready(function() {
+    var nameInput = $('#nameInput');
+    var ageInput = $('#ageInput');
+    var saveButton = $('#saveButton');
+    var clearButton = $('#clearButton');
+    var tableBody = $('#tableBody');
+
+    saveButton.on('click', function() {
+      var name = nameInput.val();
+      var age = parseInt(ageInput.val());
+
+      if (name && !isNaN(age)) {
+        var newData = { name: name, age: age };
+        var existingData = JSON.parse(localStorage.getItem('dataStorage') || '[]');
+        existingData.push(newData);
+        localStorage.setItem('dataStorage', JSON.stringify(existingData));
+
+        // Clear input fields after saving
+        nameInput.val('');
+        ageInput.val('');
+
+        displayData();
+      }
+    });
+
+    clearButton.on('click', function() {
+      localStorage.removeItem('dataStorage');
+      displayData();
+    });
+
+    function displayData() {
+      var data = JSON.parse(localStorage.getItem('dataStorage') || '[]');
+      var tableContent = '';
+
+      $.each(data, function(index, item) {
+        tableContent += '<tr><td>' + item.name + '</td><td>' + item.age + '</td></tr>';
+      });
+
+      tableBody.html(tableContent);
+    }
+
+    displayData(); // Display the data on page load
+  });
+</script>
+<!--Footer-->
+<footer class="footer">
+    <div class="footer__addr">
+        <h1 class="footer__logo">Dobu Martial Arts</h1>
+    </div>
+
+    <ul class="footer__nav">
+        <li class="nav__item">
+            <h2 class="nav__title">Media</h2>
+            <ul class="nav__ul">
+                <li><a href="#">Online</a></li>
+                <li><a href="#">Print</a></li>
+                <li><a href="#">Alternative Ads</a></li>
+            </ul>
+        </li>
+
+        <li class="nav__item">
+          <h2 class="nav__title">Legal</h2>
+          <ul class="nav__ul">
+              <li><a href="privacy.html">Privacy Policy</a></li>
+              <li><a href="Facilities.html">Facilities</a></li>
+              <li><a href="Sitemap.html">Site Map</a></li>
+          </ul>
+      </li>
+  </ul>
+</footer>
+</footer>
+
+<script src="script.js"></script>
+
+</body>
+</html>

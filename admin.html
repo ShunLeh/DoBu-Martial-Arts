@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dobu Martial Arts</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" integrity="sha384-rOA1PnstxnOBLzCLMcre8ybwbTmemjzdNlILg8O7z1lUkLXozs4DHonlDtnE7fpc" crossorigin="anonymous">
+</head>
+<body >
+
+<header class="header">    
+    <nav class="navbar">        
+        <a href="index.html">Home</a>
+        <a href="About.html">About us</a>
+        <a href="Price.html">Price</a>
+        <a href="Course.html">Courses</a>
+        <a href="Timetable.html">Timetable</a>
+        <a href="instructor.html">Instructor</a>
+        <a href="register.html">Register</a>
+        <a href="adminlogin.html">Admin</a>
+        <a href="login.html">Login</a>
+    </nav>
+</header>
+<div class="container">
+    <h3 style="text-align: center;"><b><u>Admin View</u></b></h3>
+    <!DOCTYPE html>
+<html>
+<head>
+<title>Display User Data</title>
+</head>
+<body>
+    
+<table id="userData">
+<tr>
+    <th>Username</th>
+    <th>Email</th>
+    <th>Password</th>
+    <th>Phone Number</th>
+    <th>Actions</th>
+    
+</tr>
+
+</table>
+
+<script>
+
+// Retrieve all form data from local storage
+var allFormData = JSON.parse(localStorage.getItem('allFormData'));
+
+// Display the retrieved data in table format
+if (allFormData) {
+    var table = document.getElementById('userData');
+
+    // Iterate through each form data object
+    allFormData.forEach(function(formData) {
+        var row = table.insertRow();
+
+        var usernameCell = row.insertCell();
+        usernameCell.textContent = formData.username;
+
+        var emailCell = row.insertCell();
+        emailCell.textContent = formData.email;
+
+        var passwordCell = row.insertCell();
+        passwordCell.textContent = formData.password;
+
+        var phoneCell = row.insertCell();
+        phoneCell.textContent = formData.phone;
+
+        var actionsCell = row.insertCell();
+        var deleteButton = document.createElement('button');
+        deleteButton.textContent = 'Delete';
+        deleteButton.addEventListener('click', function() {
+            deleteFormData(formData);
+        });
+        actionsCell.appendChild(deleteButton);
+
+        var editButton = document.createElement('button');
+        editButton.textContent = 'Edit';
+        editButton.addEventListener('click', function() {
+            editFormData(formData);
+        });
+        actionsCell.appendChild(editButton);
+
+        var addButton = document.createElement('button');
+        addButton.textContent = 'Add+';
+        addButton.addEventListener('click', function() {
+            insertFormData(formData);
+        });
+        actionsCell.appendChild(addButton);
+    });   
+   
+}
+
+
+// Function to delete the form data
+function deleteFormData(formData) {
+    // Retrieve existing form data from local storage
+    var allFormData = JSON.parse(localStorage.getItem('allFormData')) || [];
+
+    // Find the index of the form data object to delete
+    var index = allFormData.findIndex(function(data) {
+        return data.userId === formData.userId;
+    });
+
+    // Remove the form data object from the array
+    if (index !== -1) {
+        allFormData.splice(index, 1);
+    }
+
+    // Save the updated form data array to local storage
+    localStorage.setItem('allFormData', JSON.stringify(allFormData));
+
+    // Refresh the page to reflect the updated data
+    location.reload();
+}
+
+
+// Function to edit the form data
+function editFormData(formData) {
+// Retrieve existing form data from local storage
+var allFormData = JSON.parse(localStorage.getItem('allFormData')) || [];
+
+// Find the index of the form data object to edit
+var index = allFormData.findIndex(function(data) {
+    return data.userId === formData.userId;
+});
+
+if (index !== -1) {
+    // Prompt the user to enter the updated data
+    var updatedUsername = prompt('Enter updated Username:', formData.username);
+    var updatedEmail = prompt('Enter updated Email:', formData.email);
+    var updatedPassword = prompt('Enter updated Password:', formData.password);
+    var updatedPhone = prompt('Enter updated phone:', formData.phone);
+
+
+    // Perform validation if necessary
+    // ...
+
+    // Update the form data object with the new values
+    
+    allFormData[index].username = updatedUsername;
+    allFormData[index].email = updatedEmail;
+    allFormData[index].password = updatedPassword;
+    allFormData[index].phone =updatedPhone;
+
+    // Save the updated form data array to local storage
+    localStorage.setItem('allFormData', JSON.stringify(allFormData));
+
+    // Refresh the page to reflect the updated data
+    location.reload();
+}
+}
+// function to add new row
+function insertFormData() {
+    // Retrieve existing form data from local storage
+    var allFormData = JSON.parse(localStorage.getItem('allFormData')) || [];
+
+    // Prompt the user to enter the new data
+    var newUsername = prompt('Enter Username:');
+    var newEmail = prompt('Enter email:');
+    var newPassword = prompt('Enter Password:');
+   var newPhone=prompt('Enter phone number');
+
+    // Perform validation if necessary
+    // ...
+
+    // Create a new form data object with the input values
+    var newFormData = {
+        username: newUsername,
+        email: newEmail,
+        password: newPassword,
+        phone:newPhone
+    };
+
+    // Add the new form data object to the existing array
+    allFormData.push(newFormData);
+
+    // Save the updated form data array to local storage
+    localStorage.setItem('allFormData', JSON.stringify(allFormData));
+
+    // Refresh the page to reflect the updated data
+    location.reload();
+}
+
+
+
+</script>
+
+
+
+
+
+<!--Footer-->
+<footer class="footer">
+    <div class="footer__addr">
+        <h1 class="footer__logo">Dobu Martial Arts</h1>
+    </div>
+
+    <ul class="footer__nav">
+        <li class="nav__item">
+            <h2 class="nav__title">Media</h2>
+            <ul class="nav__ul">
+                <li><a href="#">Online</a></li>
+                <li><a href="#">Print</a></li>
+                <li><a href="#">Alternative Ads</a></li>
+            </ul>
+        </li>
+
+        <li class="nav__item">
+            <h2 class="nav__title">Legal</h2>
+            <ul class="nav__ul">
+                <li><a href="privacy.html">Privacy Policy</a></li>
+                <li><a href="Facilities.html">Facilities</a></li>
+                <li><a href="Sitemap.html">Site Map</a></li>
+            </ul>
+        </li>
+    </ul>
+</footer>
+
+
+</body>
+</html>
+
